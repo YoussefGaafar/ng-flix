@@ -1,0 +1,25 @@
+.genres-links {
+  a {
+    display: inline-block;
+    padding: 5px;
+    background-color: var(--primary-color);
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 1.4rem;
+  }
+}
+
+.default-message {
+  text-align: center;
+  color: var(--p-primary-color);
+  font-weight: bold;
+  font-size: larger;
+  margin-top: 64px;
+}
+
+::ng-deep {
+  div.p-paginator {
+    background: none !important;
+  }
+}

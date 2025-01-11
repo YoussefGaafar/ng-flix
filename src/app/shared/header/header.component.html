@@ -1,0 +1,24 @@
+<header>
+  <div class="logo">
+    <a routerLink="/"><img src="images/logo.png" alt="NGFLIX LOGO" /></a>
+  </div>
+  <div class="navigation">
+    <ul>
+      <li>
+        <a
+          routerLink="/"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >Home</a
+        >
+      </li>
+      <li>
+        <a routerLink="/shows-list/movie" routerLinkActive="active">Movies</a>
+      </li>
+      <li>
+        <a routerLink="/shows-list/tv" routerLinkActive="active">TV Shows</a>
+      </li>
+      <li><a routerLink="/genres" routerLinkActive="active">Genres</a></li>
+    </ul>
+  </div>
+</header>

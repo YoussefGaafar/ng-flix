@@ -1,0 +1,35 @@
+<div class="slider" *ngIf="slides()">
+  <ng-container *ngFor="let show of slides(); let i = index">
+    <!-- NOTE: @slideFade cannot be applied on Angular tags (ng-content, ng-container, ng-template, etc.) -->
+    <div class="slide" *ngIf="i === slideIndex" @slideFade>
+      <div class="slide-bg">
+        <img
+          [src]="imageBaseUrl + '/original/' + show.backdrop_path"
+          alt="{{ show.title }}"
+        />
+      </div>
+
+      <div class="slide-pane">
+        <h2 class="title">{{ show.original_title }}</h2>
+        <div class="metadata mb-4">
+          <div class="rating mb-1">
+            <i class="pi pi-star-fill"></i>
+            <span>{{
+              show.vote_average | number: '1.2-2' | removeTrailingZeros
+            }}</span>
+            <span>/10</span>
+          </div>
+          <div class="votes mb-1">
+            <i class="pi pi-users"></i>
+            <span>{{ show.vote_count }}</span>
+          </div>
+          <div class="release-date">
+            <i class="pi pi-calendar"></i>
+            <span>{{ show.release_date | date: 'dd-MM-yyyy' }}</span>
+          </div>
+        </div>
+        <div class="description">{{ show.overview }}</div>
+      </div>
+    </div>
+  </ng-container>
+</div>

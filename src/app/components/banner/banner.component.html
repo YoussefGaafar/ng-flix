@@ -1,0 +1,20 @@
+<div class="banner container" *ngIf="showsData()">
+  <h1
+    [ngClass]="{
+      'top-rated': title() === 'Top Rated Movies',
+      'upcoming-movies': title() === 'Upcoming Movies',
+      'popular-tv-shows': title() === 'Popular TV Shows',
+    }"
+  >
+    {{ title() }}
+  </h1>
+  <!-- Using PrimeFlex Grid System -->
+  <div class="grid">
+    <div
+      class="col-12 sm:col-6 md:col-4 lg:col-3 xl:col-2"
+      *ngFor="let show of showsData()"
+    >
+      <app-show-item [showItemObj]="show" [showItemType]="showsType()" />
+    </div>
+  </div>
+</div>

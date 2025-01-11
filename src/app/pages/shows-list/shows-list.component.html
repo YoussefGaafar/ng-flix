@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="grid">
+    <div class="col-12 search-box">
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+
+        <input
+          id="search"
+          type="text"
+          pInputText
+          [(ngModel)]="searchQuery"
+          (change)="onSearchChanged()"
+        />
+      </span>
+    </div>
+  </div>
+
+  <ng-container *ngIf="showsList$ | async as showsList">
+    <div class="grid">
+      <div
+        class="col-12 sm:col-6 md:col-4 lg:col-3 xl:col-2"
+        *ngFor="let show of showsList.results"
+      >
+        <app-show-item [showItemObj]="show" [showItemType]="showsType" />
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- Paginator Module -->
+  <div class="grid">
+    <div class="col-12">
+      <p-paginator
+        (onPageChange)="onPageChange($event)"
+        [rows]="20"
+        [totalRecords]="total_pages_results"
+      />
+    </div>
+  </div>
+</div>

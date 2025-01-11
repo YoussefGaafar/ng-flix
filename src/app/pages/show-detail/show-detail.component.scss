@@ -1,0 +1,72 @@
+::ng-deep {
+  .p-tab {
+    border-color: none !important;
+  }
+  .p-tablist-tab-list {
+    justify-content: center;
+    background: none !important;
+    border: none !important;
+  }
+
+  .p-tabpanels {
+    background: none !important;
+    color: white !important;
+  }
+}
+
+.poster {
+  max-width: 100%;
+  margin-left: 10px;
+}
+
+.overview {
+  line-height: 1.4;
+  width: 54%;
+  margin-bottom: 28px;
+}
+.stats {
+  .info-box {
+    display: flex;
+    margin-bottom: 15px;
+
+    .label {
+      width: 150px;
+      font-weight: bold;
+    }
+
+    .value {
+      color: var(--p-primary-color);
+    }
+  }
+}
+
+.info-genres .value span {
+  margin-right: 8px;
+}
+
+.show-image {
+  width: 100%;
+}
+
+.actor {
+  padding: 16px;
+  img {
+    width: 100%;
+  }
+
+  div {
+    text-align: center;
+    margin: 10px 0;
+  }
+}
+
+@media (max-width: 562px) {
+  .poster {
+    img {
+      margin: 0;
+    }
+  }
+  .overview {
+    width: 100%;
+  }
+}

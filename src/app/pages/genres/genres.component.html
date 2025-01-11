@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="grid">
+    <div class="col-12 genres-links">
+      <ng-container *ngIf="genres$ | async as genres">
+        <a
+          *ngFor="let genre of genres"
+          role="button"
+          aria-hidden="true"
+          [routerLink]="'/genres/' + genre.id"
+          (click)="onSelectedGenre(genre.name)"
+        >
+          {{ genre.name }}
+        </a>
+      </ng-container>
+    </div>
+  </div>
+
+  <ng-container *ngIf="selectedShows$ | async as selectedShows">
+    <div class="grid">
+      <div
+        class="col-12 sm:col-6 md:col-4 lg:col-3 xl:col-2"
+        *ngFor="let show of selectedShows.results"
+      >
+        <app-show-item [showItemObj]="show" showItemType="movie" />
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="!selectedGenreId">
+    <!-- Fallback content when selectedShows is null, undefined, or empty -->
+    <div class="default-message">
+      <p>Click on a Genre Type from the List Above.</p>
+    </div>
+  </ng-container>
+
+  <!-- Paginator Module -->
+  <div class="grid" *ngIf="total_pages_results() !== 0">
+    <div class="col-12">
+      <p-paginator
+        #paginator
+        (onPageChange)="onPageChange($event)"
+        [rows]="20"
+        [totalRecords]="total_pages_results()"
+      />
+    </div>
+  </div>
+</div>

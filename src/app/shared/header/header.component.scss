@@ -1,0 +1,46 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 65px;
+  background-color: #212121;
+  border-bottom: 1px solid #414141;
+
+  .logo {
+    margin-left: 32px;
+    a {
+      img {
+        width: 120px;
+      }
+    }
+  }
+
+  .navigation {
+    display: flex;
+    flex-direction: row;
+    ul {
+      display: block;
+      padding: 0;
+      margin-right: 32px;
+      list-style: none;
+      li {
+        display: inline;
+        margin-right: 16px;
+        a {
+          color: white;
+          text-decoration: none;
+
+          &:hover,
+          &:active {
+            color: var(--primary-color); /* main color */
+          }
+        }
+        // Add styles for the active class
+        a.active {
+          color: var(--primary-color); /* Change color for active link */
+          font-weight: bold; /* Make the text bold */
+        }
+      }
+    }
+  }
+}

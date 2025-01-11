@@ -1,0 +1,17 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the container takes at least the full viewport height */
+}
+
+app-header {
+  flex-shrink: 0; /* Prevent the header from shrinking */
+}
+
+main {
+  flex: 1; /* Allow the main content (router-outlet) to grow and take up remaining space */
+}
+
+app-footer {
+  flex-shrink: 0; /* Prevent the footer from shrinking */
+}

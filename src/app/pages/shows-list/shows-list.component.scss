@@ -1,0 +1,27 @@
+.search-box {
+  border: 1px solid var(--primary-color);
+  width: 30%;
+  margin: 10px;
+  span {
+    i {
+      margin-left: 10px;
+    }
+    input {
+      background-color: transparent;
+      border: none;
+      color: white;
+    }
+  }
+}
+
+::ng-deep {
+  div.p-paginator {
+    background: none !important;
+  }
+}
+
+@media (max-width: 922px) {
+  .search-box {
+    width: 70%;
+  }
+}

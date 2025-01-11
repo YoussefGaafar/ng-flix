@@ -1,0 +1,152 @@
+<ng-container *ngIf="show$ | async as show">
+  <app-slider [slides]="[show]" />
+
+  <p-tabs value="0">
+    <p-tablist>
+      <p-tab value="0">Overview</p-tab>
+      <p-tab value="1">Videos</p-tab>
+      <p-tab value="2">Photos</p-tab>
+    </p-tablist>
+
+    <p-tabpanels>
+      <p-tabpanel value="0">
+        <div class="grid">
+          <div class="col-12 sm:col-6 md:col-4 lg:col-3">
+            <img
+              class="poster"
+              [src]="imagesPathSizes.medium + show.poster_path"
+              alt="{{ show.original_title }}"
+            />
+          </div>
+          <div class="col-12 sm:col-6 md:col-8 lg:col-9">
+            <h2>Overview</h2>
+            <p class="overview">{{ show.overview }}</p>
+            <div class="stats">
+              <div class="info-release-date info-box">
+                <div class="label">Release Date:</div>
+                <div class="value">
+                  {{ show.release_date | date: 'dd-MM-yyyy' }}
+                </div>
+              </div>
+              <div class="info-language info-box">
+                <div class="label">Language:</div>
+                <div class="value">
+                  {{ show.original_language.toUpperCase() }}
+                </div>
+              </div>
+              <div class="info-revenue info-box">
+                <div class="label">Revenue:</div>
+                <div class="value">
+                  {{ show.revenue | currency: 'USD' | removeTrailingZeros }}
+                </div>
+              </div>
+              <div class="info-duration info-box">
+                <div class="label">Duration:</div>
+                <div class="value">{{ show.runtime }} min</div>
+              </div>
+              <div class="info-status info-box">
+                <div class="label">Status:</div>
+                <div class="value">
+                  {{ show.status }}
+                </div>
+              </div>
+              <div class="info-genres info-box">
+                <div class="label">Genres:</div>
+                <div class="value">
+                  <span *ngFor="let genre of show.genres">
+                    {{ genre.name }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </p-tabpanel>
+
+      <p-tabpanel value="1">
+        <ng-container *ngIf="showVideos$ | async as showVideos; else fallback">
+          <div class="grid">
+            <div
+              class="col-12 sm:col-6 md:col-4 lg:col-3 xl:col-4"
+              *ngFor="let video of showVideos.slice(0, 12)"
+            >
+              <ng-container *ngIf="video.site === 'YouTube'">
+                <app-video-embed [videoKey]="video.key" />
+              </ng-container>
+            </div>
+          </div>
+        </ng-container>
+
+        <ng-template #fallback>
+          <!-- Fallback content when selectedShows is null, undefined, or empty -->
+          <div class="fallback-message">
+            <p>No shows available or still loading...</p>
+          </div>
+        </ng-template>
+      </p-tabpanel>
+
+      <p-tabpanel value="2">
+        <ng-container *ngIf="showImages$ | async as showImages">
+          <div class="grid">
+            <div
+              class="col-12 sm:col-6 md:col-4 lg:col-3 xl:col-2"
+              *ngFor="let image of showImages"
+            >
+              <p-image
+                [src]="imagesPathSizes.large + image.file_path"
+                [preview]="true"
+                alt="{{ show.title }}"
+                width="100%"
+              >
+                <ng-template #indicator>
+                  <i class="pi pi-eye"></i>
+                </ng-template>
+
+                <ng-template
+                  #preview
+                  let-style="style"
+                  let-previewCallback="previewCallback"
+                >
+                  <img
+                    [src]="imagesPathSizes.medium + image.file_path"
+                    alt="{{ show.title }}"
+                    width="100%"
+                    [style]="style"
+                    (click)="previewCallback()"
+                  />
+                </ng-template>
+              </p-image>
+            </div>
+          </div>
+        </ng-container>
+      </p-tabpanel>
+    </p-tabpanels>
+  </p-tabs>
+
+  <!-- Displaying Movie Actors Using Carousels -->
+  <ng-container *ngIf="showCast$ | async as actors">
+    <p-carousel
+      [value]="actors"
+      [numVisible]="6"
+      [numScroll]="3"
+      [circular]="false"
+    >
+      <ng-template let-actor #item>
+        <div class="actor">
+          <img
+            *ngIf="actor.profile_path; else defaultActorPhoto"
+            class=""
+            [src]="imagesPathSizes.medium + actor.profile_path"
+            alt="{{ actor.name }}"
+          />
+          <div>{{ actor.character }}</div>
+          <div>({{ actor.name }})</div>
+        </div>
+      </ng-template>
+    </p-carousel>
+  </ng-container>
+</ng-container>
+
+<ng-template #defaultActorPhoto>
+  <img src="./images/actor.jpg" alt="No Profile Image" />
+</ng-template>

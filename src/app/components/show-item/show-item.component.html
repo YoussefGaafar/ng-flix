@@ -1,0 +1,23 @@
+<a
+  class="show-item"
+  *ngIf="showItemObj() !== null"
+  [routerLink]="'/detail/' + showItemObj().id + '/' + showItemType()"
+>
+  <div class="show-item-rating">
+    <i class="pi pi-star-fill"></i>
+    <span
+      >{{
+        showItemObj().vote_average | number: '1.2-2' | removeTrailingZeros
+      }}/10</span
+    >
+  </div>
+  <div class="show-item-image">
+    <img
+      [src]="imageBaseUrl + '/w500/' + showItemObj().poster_path"
+      alt="{{ showItemObj().title }}"
+    />
+  </div>
+  <div class="show-item-title">
+    {{ showItemObj().original_title }}
+  </div>
+</a>
