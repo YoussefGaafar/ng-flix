@@ -1,16 +1,16 @@
 # Ng-Flix 🎬
 
-Welcome to **Ng-Flix**, a sleek and modern movie streaming platform built with Angular! This project is designed to provide users with an immersive experience for browsing, searching, and discovering movies. Whether you're a movie enthusiast or a developer looking to explore Angular, Ng-Flix has something for everyone.
+Welcome to **Ng-Flix**, a sleek and modern movie streaming platform built with Angular! This project is designed to provide users with an immersive experience for browsing, searching, and discovering various movies and TV shows. Whether you're a Movie or TV shows enthusiast or a developer looking to explore Angular, Ng-Flix has something for everyone.
 
-![Ng-Flix Demo](./images/dashboard.png)
+![Ng-Flix Demo](./public/images/dashboard.png)
 
 ## Features ✨
 
-- **Movie Browsing**: Explore a vast collection of movies with beautiful posters and details.
-- **Search Functionality**: Easily search for your favorite movies by title, genre, or keyword.
-- **Responsive Design**: Enjoy a seamless experience across all devices, from desktops to mobile phones.
-- **Movie Details**: Get detailed information about each movie, including synopsis, ratings, cast, and more.
-- **User-Friendly Interface**: Intuitive and easy-to-navigate UI for a smooth user experience.
+- 🎥 **Movie Browsing**: Explore a vast collection of movies with stunning posters and detailed descriptions. Dive into the world of cinema effortlessly!
+- 🔍 **Search Functionality**: Easily search for your favorite movies by title, genre, or keyword. Find what you’re looking for in seconds!
+- 📱 **Responsive Design**: Enjoy a seamless experience across all devices, whether you're on a desktop, tablet, or mobile phone. It’s cinema on the go!
+- 🎬 **Movie Details**: Get in-depth information about each movie, including synopsis, ratings, cast, trailers, and more. Everything you need to know in one place!
+- 🖥️ **User-Friendly Interface**: Navigate through the app with ease thanks to its intuitive and clean design. A smooth and enjoyable experience for everyone!
 
 ## Technologies Used 🛠️
 
@@ -18,7 +18,24 @@ Welcome to **Ng-Flix**, a sleek and modern movie streaming platform built with A
 - **TypeScript**: Adds type safety and enhances JavaScript development.
 - **RxJS**: For reactive programming and handling asynchronous operations.
 - **SCSS**: For styling and creating a visually appealing design.
-- **Angular Material**: UI component library for Angular to create a consistent and modern design.
+- **PrimeNG**: A rich UI component library for Angular to create a consistent, modern, and feature-rich design.
+
+## Project Structure 🗂️
+```bash
+src/
+├── app/
+│ ├── components/ # Reusable UI components (e.g., banner, show-item, slider, video-embed)
+│ ├── pages/ # Main views/pages (e.g., home, movies, tv, genres)
+│ ├── services/ # Angular services for API calls and business logic
+│ ├── models/ # TypeScript interfaces/models for data structures
+│ ├── pipes/ # For transforming certain data before interpolating to the template
+│ ├── shared/ # Shared components for all pages (e.g., header, footer)
+│ ├── app-routing.module.ts # Angular routing configuration
+│ ├── app.component.ts # Root component
+│ └── app.module.ts # Root module
+├── styles/ # Global styles and SCSS files
+└── main.ts # Application entry point
+```
 
 ## Getting Started 🚀
 
